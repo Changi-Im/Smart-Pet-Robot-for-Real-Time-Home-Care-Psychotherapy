@@ -1,0 +1,65 @@
+
+
+SDK 및 샘플코드 설치
+sudo apt-get update
+sudo apt-get install python3-dev python3-venv
+python3 -m venv env
+env/bin/python -m pip install --upgrade pip setuptools wheel
+source env/bin/activate
+
+sudo apt-get install portaudio19-dev libffi-dev libssl-dev
+python -m pip install --upgrade google-assistant-sdk[samples]
+
+
+자격증명하기
+python -m pip install --upgrade google-auth-oauthlib[tool]
+
+
+
+
+
+샘플코드 실행방법
+googlesamples-assistant-pushtotalk --project-id my-dev-project --device-model-id my-model
+my-dev-project >> https://console.actions.google.com/
+
+googlesamples-assistant-pushtotalk --project-id happy-47e7a --device-model-id happy-47e7a-h.smartbot-yqrpeg --lang ko-kr
+
+
+
+가상환경 나갔다가 다시 실행하기
+deactivate
+sudo reboot
+source env/bin/activate
+실행 명령어 다시 넣기
+
+
+
+
+23. 엔터키 누르지 않고 바로 실행하기
+https://developers.google.com/assistant/sdk/guides/service/python/extend/handle-device-commands
+실행 명령어 >> git clone https://github.com/googlesamples/assistant-sdk-python
+파일 다운로드 받고.
+해당 디렉토리의 특정 파일을 수정
+assistant-sdk-python/google-assistant-sdk/googlesamples/assistant/grpc/pushtotalk.py
+해당 디렉토리까지 이동 후 nano pushtotalk.py 열어 수정해주세요.
+아니면.. 해당 파일 다운로드 후 수정하고, 다시 업로드...
+수정 파일 라인 : 457번째 줄
+#click.pause(info='Press Enter to send a new request...')
+time.sleep(1)
+
+수정후 해당 파일로 실행하기
+nano startgoogle.sh 
+>>> 파일 내용은..
+#!/bin/bash
+source /home/pi/env/bin/activate
+python3 /home/pi/assistant-sdk-python/google-assistant-sdk/googlesamples/assistant/grpc/pushtotalk.py
+>>  Ctrl + o >> 엔터 >> Ctrl + x
+
+실행은... .
+./startgoogle.sh
+
+
+
+
+
+
