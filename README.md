@@ -1,4 +1,4 @@
-## Smart-pet-robot-for-real-time-home-care-psychotherapy
+## Smart Pet Robot for Real Time Home Care Psychotherapy
 
 ### About
 Project for Hanium Competition 2022. 
